@@ -1,0 +1,64 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "IBM Plex Sans Arabic", "Cairo", system-ui, sans-serif;
+  --color-navy-950: #0a1424;
+  --color-navy-900: #101f35;
+  --color-navy-800: #1a2d4a;
+  --color-navy-700: #253b5e;
+  --color-navy-600: #34507a;
+  --color-brand-50: #ecfdf5;
+  --color-brand-100: #d1fae5;
+  --color-brand-500: #10b981;
+  --color-brand-600: #059669;
+  --color-brand-700: #047857;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  @apply bg-slate-50 text-slate-800 antialiased;
+  font-family: var(--font-sans);
+}
+
+/* Leaflet stays LTR internally so tiles/controls are not mirrored */
+.leaflet-container {
+  direction: ltr;
+  font-family: var(--font-sans);
+  z-index: 0;
+}
+.leaflet-popup-content {
+  direction: rtl;
+  text-align: right;
+  margin: 10px 12px;
+}
+.shahm-marker {
+  background: transparent;
+  border: 0;
+}
+
+.scrollbar-thin::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+.scrollbar-thin::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 9999px;
+}
+
+@keyframes pulse-ring {
+  0% { transform: scale(0.8); opacity: 0.7; }
+  100% { transform: scale(2.2); opacity: 0; }
+}
+.pulse-ring::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 9999px;
+  background: currentColor;
+  animation: pulse-ring 1.6s ease-out infinite;
+}
